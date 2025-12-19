@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ResuMate Tasks & Scheduler</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/progress.css">
+  <style>
+    .task-row { display: flex; justify-content: space-between; padding: 10px; background: rgba(15,23,42,0.6); border-radius: 8px; margin-bottom: 8px; align-items: center; }
+    .task-overdue { border-left: 3px solid #f87171; }
+    .deadline-badge { font-size: 11px; background: #334155; padding: 2px 6px; border-radius: 4px; color: #cbd5e1; }
+  </style>
+</head>
+<body class="page-shell">
+  <header class="nav-shell">
+    <div class="nav-inner">
+      <div class="nav-brand"><div class="brand-title">ResuMate</div></div>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="tasks.html" class="nav-link nav-link-active">Tasks & Scheduler</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page-main">
+    <div class="max-w-6 grid grid-2">
+      <section class="card">
+        <div class="card-header">
+          <h1 class="card-title">My Tasks</h1>
+          <button id="reschedule-btn" class="rm-btn rm-btn-ghost" style="font-size:11px;">Auto-Reschedule Overdue</button>
+        </div>
+        <div id="task-list">Loading tasks...</div>
+      </section>
+      
+      <aside class="card">
+        <h2 class="card-title">Add Task</h2>
+        <form id="add-task-form" class="form-grid">
+          <div class="field-row"><label class="field-label">Title</label><input id="t-title" type="text" required></div>
+          <div class="field-row"><label class="field-label">Deadline</label><input id="t-deadline" type="date" required></div>
+          <div class="field-row"><label class="field-label">Priority</label>
+            <select id="t-priority" style="background:#1e293b; border:1px solid #374151; color:white; padding:5px; border-radius:8px;">
+              <option>Low</option><option selected>Medium</option><option>High</option>
+            </select>
+          </div>
+          <button type="submit" class="rm-btn rm-btn-primary">Add Task</button>
+        </form>
+        
+        <div class="card" style="margin-top: 20px; border-color: var(--accent);">
+          <h2 class="card-title">AI Recommendations</h2>
+          <div id="rec-box" style="font-size: 12px; color: var(--text-muted); margin-top:10px;">Loading insights...</div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script type="module">
+    import api from '../api/axiosConfig.js';
+
+    async function loadTasks() {
+      const list = document.getElementById('task-list');
+      try {
+        const res = await api.get('/tasks/list');
+        list.innerHTML = '';
+        res.data.tasks.forEach(t => {
+          const isOverdue = new Date(t.deadline) < new Date() && t.status !== 'completed';
+          const div = document.createElement('div');
+          div.className = `task-row ${isOverdue ? 'task-overdue' : ''}`;
+          div.innerHTML = `
+            <div>
+              <div style="font-weight:500;">${t.title}</div>
+              <div class="deadline-badge">${new Date(t.deadline).toLocaleDateString()} • ${t.priority}</div>
+            </div>
+            <button class="rm-btn rm-btn-ghost" onclick="markDone(${t.id})">${t.status === 'completed' ? 'Done' : 'Complete'}</button>
+          `;
+          list.appendChild(div);
+        });
+      } catch(e) { list.textContent = 'Error loading tasks'; }
+    }
+
+    async function markDone(id) {
+      try {
+        await api.post(`/tasks/update/${id}`, { status: 'completed' });
+        loadTasks();
+      } catch(e) { alert('Error updating task'); }
+    }
+
+    async function loadRecs() {
+      try {
+        const res = await api.get('/recommendations');
+        const box = document.getElementById('rec-box');
+        box.innerHTML = res.data.recommendations.map(r => 
+          `<div style="margin-bottom:8px;"><strong>${r.type}:</strong> ${r.text}</div>`
+        ).join('');
+      } catch(e) {}
+    }
+
+    document.getElementById('add-task-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      await api.post('/tasks/create', {
+        title: document.getElementById('t-title').value,
+        deadline: document.getElementById('t-deadline').value,
+        priority: document.getElementById('t-priority').value
+      });
+      loadTasks();
+    });
+
+    document.getElementById('reschedule-btn').addEventListener('click', async () => {
+      const res = await api.post('/tasks/reschedule');
+      alert(res.data.message);
+      loadTasks();
+    });
+
+    loadTasks();
+    loadRecs();
+  </script>
+</body>
+</html>

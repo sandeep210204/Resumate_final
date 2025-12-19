@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { 
+  font-family: 'Times New Roman', serif; 
+  margin: 0.5in; 
+  color: #000; 
+  line-height: 1.4; 
+  text-align: justify; 
+}
+.header { 
+  text-align: center; 
+  margin-bottom: 20pt; 
+  padding-bottom: 10pt; 
+  border-bottom: 1pt solid #000; 
+}
+.name { 
+  font-size: 18pt; 
+  font-weight: bold; 
+  margin-bottom: 5pt; 
+}
+.contact { 
+  font-size: 10pt; 
+  margin-bottom: 3pt; 
+}
+.section { 
+  margin-bottom: 15pt; 
+}
+.section-title { 
+  font-size: 12pt; 
+  font-weight: bold; 
+  text-transform: uppercase; 
+  margin-bottom: 8pt; 
+  border-bottom: 1pt solid #000; 
+  padding-bottom: 2pt; 
+}
+.job { 
+  margin-bottom: 10pt; 
+  page-break-inside: avoid; 
+}
+ul { 
+  margin: 5pt 0 5pt 15pt; 
+  text-align: justify; 
+}
+li { 
+  margin-bottom: 2pt; 
+  text-align: justify; 
+}
+p { 
+  text-align: justify; 
+  margin: 0 0 8pt 0; 
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="name">{{name}}</div>
+  <div class="contact">{{email}} | {{phone}} | {{location}}</div>
+  <div class="contact">{{linkedin}} | {{github}}</div>
+</div>
+<div class="section">
+  <div class="section-title">Professional Summary</div>
+  <p>{{summary}}</p>
+</div>
+<div class="section">
+  <div class="section-title">Technical Skills</div>
+  {{skillsHTML}}
+</div>
+<div class="section">
+  <div class="section-title">Professional Experience</div>
+  {{experienceHTML}}
+</div>
+<div class="section">
+  <div class="section-title">Education</div>
+  {{educationHTML}}
+</div>
+<div class="section">
+  <div class="section-title">Projects</div>
+  {{projectsHTML}}
+</div>
+<div class="section">
+  <div class="section-title">Certifications</div>
+  {{certificationsHTML}}
+</div>
+</body>
+</html>

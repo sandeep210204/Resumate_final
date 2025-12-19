@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  resumate:
+    build: .
+    ports:
+      - "4000:4000"
+      - "8000:8000"
+    volumes:
+      - ./resumes:/app/resumes
+      - ./project/backend/videos:/app/project/backend/videos
+      - ./project/backend/learning_paths:/app/project/backend/learning_paths
+      - ./database.sqlite:/app/database.sqlite
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

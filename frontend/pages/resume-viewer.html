@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ResuMate • Resume Viewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/resume.css" />
+  </head>
+  <body class="page-shell">
+    <header class="nav-shell">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-brand">
+          <div class="brand-mark"><span></span></div>
+          <div class="brand-text">
+            <div class="brand-title">ResuMate</div>
+            <div class="brand-subtitle">Resume & Progress Studio</div>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="./resume-editor.html" class="nav-link">Resume Editor</a>
+          <a href="./resume-viewer.html" class="nav-link nav-link-active">Viewer</a>
+          <a href="./resume-templates.html" class="nav-link">Templates</a>
+          <a href="./progress-dashboard.html" class="nav-link">Progress</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <div class="max-w-6 grid grid-2">
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <h1 class="card-title">Current resume draft</h1>
+              <p class="card-subtitle">
+                This viewer renders whatever you saved in the editor into simple cards and lists.
+              </p>
+            </div>
+          </div>
+          <div id="viewer-root" class="viewer-root"></div>
+        </section>
+
+        <aside class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Next steps</h2>
+              <p class="card-subtitle">
+                Happy with the content? Switch to templates and export as a polished PDF.
+              </p>
+            </div>
+          </div>
+          <div class="card-grid">
+            <div class="empty-state">
+              <div class="empty-icon">🎨</div>
+              <div>
+                <div class="empty-body-title">Preview templates</div>
+                <div class="empty-body-subtitle">
+                  Choose between Simple, Modern, Minimal, or Creative layouts and generate a PDF
+                  from your saved resume content.
+                </div>
+              </div>
+            </div>
+            <a href="./resume-templates.html" class="rm-btn rm-btn-primary"
+              >Open template gallery</a
+            >
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="page-footer">
+      <div class="page-footer-inner">
+        <span>Resume Viewer • Read-only representation of your stored resume</span>
+        <span>Edit content in the Resume Editor tab</span>
+      </div>
+    </footer>
+
+    <script type="module" src="../js/resumeViewer.js"></script>
+  </body>
+</html>
+
+

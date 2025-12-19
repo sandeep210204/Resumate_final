@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ResuMate • Daily Quotes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/progress.css" />
+  </head>
+  <body class="page-shell">
+    <header class="nav-shell">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-brand">
+          <div class="brand-mark"><span></span></div>
+          <div class="brand-text">
+            <div class="brand-title">ResuMate</div>
+            <div class="brand-subtitle">Resume & Progress Studio</div>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="./progress-dashboard.html" class="nav-link">Progress</a>
+          <a href="./goals.html" class="nav-link">Goals</a>
+          <a href="./daily-quotes.html" class="nav-link nav-link-active">Daily Quotes</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <div class="max-w-6 grid grid-2">
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <h1 class="card-title">Today’s focus quote</h1>
+              <p class="card-subtitle">
+                A single quote highlighted to keep you anchored while you work on your goals.
+              </p>
+            </div>
+          </div>
+          <div id="quote-main" class="quote-main"></div>
+        </section>
+
+        <aside class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">More motivation</h2>
+              <p class="card-subtitle">
+                Additional quotes for when you need a quick boost during your learning session.
+              </p>
+            </div>
+          </div>
+          <div id="quote-list" class="quote-list"></div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="page-footer">
+      <div class="page-footer-inner">
+        <span>Daily Quotes • Coming from a simple backend quotes service</span>
+        <span>Quotes also update progress.dailyQuotes in the database</span>
+      </div>
+    </footer>
+
+    <script type="module" src="../js/quotesPage.js"></script>
+  </body>
+</html>
+
+

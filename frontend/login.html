@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ResuMate Login</title>
+  <link rel="stylesheet" href="./css/global.css">
+  <link rel="stylesheet" href="./css/home.css">
+</head>
+<body class="page-shell" style="align-items:center; justify-content:center;">
+  <div class="card" style="width: 100%; max-width: 400px;">
+    <h1 class="card-title" style="text-align:center; margin-bottom: 20px;">Login to ResuMate</h1>
+    <form id="login-form" class="form-grid">
+      <div class="field-row">
+        <label class="field-label">Username</label>
+        <input type="text" id="username" required>
+      </div>
+      <div class="field-row">
+        <label class="field-label">Password</label>
+        <input type="password" id="password" required>
+      </div>
+      <button type="submit" class="rm-btn rm-btn-primary" style="width:100%; justify-content:center;">Login</button>
+      <div style="text-align:center; margin-top:10px; font-size:12px;">
+        <a href="register.html" style="color:var(--primary);">No account? Register here</a>
+      </div>
+    </form>
+  </div>
+  <script type="module">
+    import api from './api/axiosConfig.js';
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const res = await api.post('/auth/login', {
+          username: document.getElementById('username').value,
+          password: document.getElementById('password').value
+        });
+        localStorage.setItem('token', res.data.token);
+        window.location.href = 'index.html';
+      } catch (err) {
+        console.log(err);
+        alert(`Login failed: ${err.response?.data?.message || err.message || 'Unknown error'}`);
+      }
+    });
+  </script>
+</body>
+</html>

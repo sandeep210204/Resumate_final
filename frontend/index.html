@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ResuMate • Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+  </head>
+  <body class="page-shell">
+    <header class="nav-shell">
+      <div class="nav-inner">
+        <a href="./index.html" class="nav-brand">
+          <div class="brand-mark"><span></span></div>
+          <div class="brand-text">
+            <div class="brand-title">ResuMate</div>
+            <div class="brand-subtitle">Resume & Progress Studio</div>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="./pages/resume-editor.html" class="nav-link">Resume Editor</a>
+          <a href="./pages/resume-templates.html" class="nav-link">Templates</a>
+          <a href="./pages/job-search.html" class="nav-link">Find Jobs</a>
+          <a href="./pages/my-applications.html" class="nav-link">My Applications</a>
+          <a href="./pages/recruiter-dashboard.html" class="nav-link">Recruiter</a>
+          <a href="./pages/content-generator.html" class="nav-link">AI Content</a>
+          <a href="./pages/progress-dashboard.html" class="nav-link">Progress</a>
+        </nav>
+        <div class="nav-cta">
+          <span class="badge-pill">
+            <span class="badge-dot"></span>
+            Local-first • Sign-in required
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <div class="max-w-6 hero-shell">
+        <section class="hero-card">
+          <div class="hero-card-inner">
+            <div class="hero-eyebrow">
+              <span class="hero-eyebrow-dot"></span>
+              <span>Resume + Progress + Tasks in one place</span>
+            </div>
+            <h1 class="hero-heading">
+              Design a focused resume, track your <span>career momentum</span>, and manage tasks.
+            </h1>
+            <p class="hero-body">
+              ResuMate is a lightweight mini-studio to edit your resume, preview modern templates,
+              track progress, manage tasks with scheduling, and get AI recommendations — all with user accounts.
+            </p>
+            <div class="hero-actions">
+              <a href="./pages/job-search.html" class="rm-btn rm-btn-primary">Find Jobs</a>
+              <a href="./pages/content-generator.html" class="rm-btn rm-btn-primary">AI Content</a>
+              <a href="./pages/resume-editor.html" class="rm-btn rm-btn-ghost">
+                Create Resume
+              </a>
+            </div>
+            <div class="hero-actions" style="margin-top: 10px;">
+              <a href="./login.html" class="rm-btn rm-btn-ghost">Login</a>
+              <a href="./register.html" class="rm-btn rm-btn-ghost">
+                Register
+              </a>
+            </div>
+            <div class="hero-meta">
+              <div class="pill">User accounts • Local SQLite • PDF export</div>
+              <div class="pill">Built with Express, SQLite & vanilla JS</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="hero-side-card">
+          <div class="hero-visual">
+            <div class="hero-orbit">
+              <div class="hero-orbit-ring"></div>
+              <div class="hero-orbit-core">
+                Resume
+                <br />×<br />
+                Progress
+                <br />×<br />
+                Tasks
+              </div>
+              <div class="hero-orbit-chip top">
+                <span></span>
+                Template preview
+              </div>
+              <div class="hero-orbit-chip bottom">
+                <span></span>
+                Streak & skills
+              </div>
+            </div>
+          </div>
+          <div class="hero-side-card-inner">
+            <div class="hero-side-header">
+              <div>
+                <div class="hero-mini-title">Today at a glance</div>
+                <div class="hero-mini-sub">An overview of what ResuMate tracks for you</div>
+              </div>
+            </div>
+            <div class="hero-metrics">
+              <div class="hero-metric-row">
+                <span class="hero-metric-label">Resume status</span>
+                <span class="hero-metric-value" id="home-resume-status">Login required</span>
+              </div>
+              <div class="hero-metric-row">
+                <span class="hero-metric-label">Tasks completed</span>
+                <span class="hero-metric-value" id="home-tasks">–</span>
+              </div>
+              <div class="hero-metric-row">
+                <span class="hero-metric-label">Current streak</span>
+                <span class="hero-metric-value" id="home-streak">–</span>
+              </div>
+              <div class="hero-metric-row">
+                <span class="hero-metric-label">Today’s quote</span>
+                <span class="hero-metric-value" id="home-quote">Login required</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="max-w-6" style="margin-top: 26px">
+        <div class="grid grid-2">
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Resume module</h2>
+                <p class="card-subtitle">
+                  Capture your experience, education, skills, and projects in a single clean editor.
+                </p>
+              </div>
+            </div>
+            <div class="card-grid">
+              <div class="list-row">
+                <span class="list-row-label">Editor</span>
+                <span class="list-row-value">Structured sections + instant autosave</span>
+              </div>
+              <div class="list-row">
+                <span class="list-row-label">Templates</span>
+                <span class="list-row-value">Simple, Modern, Minimal, Creative</span>
+              </div>
+              <div class="list-row">
+                <span class="list-row-label">Export</span>
+                <span class="list-row-value">PDF via HTML template rendering</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Progress & Tasks module</h2>
+                <p class="card-subtitle">
+                  Track your learning pace, maintain a streak, manage tasks with scheduling, and keep goals and quotes close.
+                </p>
+              </div>
+            </div>
+            <div class="card-grid">
+              <div class="list-row">
+                <span class="list-row-label">Tasks</span>
+                <span class="list-row-value">Create, schedule, and track tasks with reminders</span>
+              </div>
+              <div class="list-row">
+                <span class="list-row-label">Skills</span>
+                <span class="list-row-value">Skill-wise progress bars</span>
+              </div>
+              <div class="list-row">
+                <span class="list-row-label">Motivation</span>
+                <span class="list-row-value">Goals + daily curated quotes + AI recommendations</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <div class="page-footer-inner">
+        <span>ResuMate • Local resume & progress mini-project</span>
+        <span>Node.js • Express • SQLite • Sequelize • Vanilla JS</span>
+      </div>
+    </footer>
+
+    <script type="module" src="./js/home.js"></script>
+  </body>
+</html>
+
+

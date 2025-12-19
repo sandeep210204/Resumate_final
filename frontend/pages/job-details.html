@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ResuMate • Job Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/resume.css">
+</head>
+<body class="page-shell">
+  <header class="nav-shell">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="brand-mark"><span></span></div>
+        <div class="brand-text">
+          <div class="brand-title">ResuMate</div>
+          <div class="brand-subtitle">Resume & Progress Studio</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="./job-search.html" class="nav-link">← Back to Search</a>
+        <a href="./my-applications.html" class="nav-link">My Applications</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="max-w-6 grid grid-2">
+      <section class="card">
+        <div id="job-details" class="job-details">
+          <div class="empty-state">
+            <div class="empty-icon">⏳</div>
+            <div class="empty-body-title">Loading job details...</div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <div class="card-header">
+          <h2 class="card-title">Apply to this job</h2>
+          <p class="card-subtitle">Your resume will be automatically attached</p>
+        </div>
+        
+        <form id="apply-form" class="form-grid" style="display: none;">
+          <div class="field-row">
+            <label class="field-label">Cover Letter</label>
+            <textarea id="coverLetter" placeholder="Tell the employer why you're interested in this role..." rows="6"></textarea>
+          </div>
+          <button type="submit" class="rm-btn rm-btn-primary">Apply Now</button>
+        </form>
+        
+        <div id="apply-status" class="apply-status"></div>
+      </aside>
+    </div>
+  </main>
+
+  <script type="module" src="../js/jobDetails.js"></script>
+</body>
+</html>

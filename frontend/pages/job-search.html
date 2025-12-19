@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ResuMate • Find Jobs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/resume.css">
+</head>
+<body class="page-shell">
+  <header class="nav-shell">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="brand-mark"><span></span></div>
+        <div class="brand-text">
+          <div class="brand-title">ResuMate</div>
+          <div class="brand-subtitle">Resume & Progress Studio</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="./resume-editor.html" class="nav-link">Resume Editor</a>
+        <a href="./job-search.html" class="nav-link nav-link-active">Find Jobs</a>
+        <a href="./my-applications.html" class="nav-link">My Applications</a>
+        <a href="./recruiter-dashboard.html" class="nav-link">Recruiter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="max-w-6">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="card-title">Find Your Dream Job</h1>
+          <p class="card-subtitle">Search thousands of jobs with intelligent skill matching</p>
+        </div>
+        
+        <form id="job-search-form" class="form-grid">
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 10px; align-items: end;">
+            <div class="field-row">
+              <label class="field-label">Keywords</label>
+              <input id="keywords" type="text" placeholder="Job title, skills, company">
+            </div>
+            <div class="field-row">
+              <label class="field-label">Location</label>
+              <input id="location" type="text" placeholder="City, state, or remote">
+            </div>
+            <div class="field-row">
+              <label class="field-label">Job Type</label>
+              <select id="jobType">
+                <option value="">All Types</option>
+                <option value="full-time">Full Time</option>
+                <option value="part-time">Part Time</option>
+                <option value="contract">Contract</option>
+                <option value="internship">Internship</option>
+              </select>
+            </div>
+            <button type="submit" class="rm-btn rm-btn-primary">Search Jobs</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Job Results</h2>
+          <span id="results-count">Search for jobs to see results</span>
+        </div>
+        <div id="job-results" class="job-results">
+          <div class="empty-state">
+            <div class="empty-icon">💼</div>
+            <div class="empty-body-title">Ready to find your next opportunity?</div>
+            <div class="empty-body-subtitle">Use the search above to discover jobs that match your skills</div>
+          </div>
+        </div>
+        <div id="pagination" class="pagination" style="display: none;"></div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="../js/jobSearch.js"></script>
+</body>
+</html>

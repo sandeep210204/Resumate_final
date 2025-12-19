@@ -1,0 +1,37 @@
+{
+  "name": "resumate",
+  "version": "1.0.0",
+  "description": "ResuMate - Resume and Progress mini-project built with Node.js, Express, PostgreSQL, Sequelize, and vanilla JS frontend.",
+  "main": "backend/index.js",
+  "scripts": {
+    "start": "node backend/index.js",
+    "dev": "nodemon backend/index.js"
+  },
+  "keywords": [
+    "resume",
+    "progress-tracker",
+    "express",
+    "sequelize",
+    "postgresql"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "html-pdf": "^3.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^7.0.11",
+    "pg": "^8.13.0",
+    "pg-hstore": "^2.3.4",
+    "puppeteer": "^23.7.0",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

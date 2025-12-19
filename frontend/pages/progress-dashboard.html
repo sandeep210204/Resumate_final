@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ResuMate • Progress Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/progress.css" />
+  </head>
+  <body class="page-shell">
+    <header class="nav-shell">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-brand">
+          <div class="brand-mark"><span></span></div>
+          <div class="brand-text">
+            <div class="brand-title">ResuMate</div>
+            <div class="brand-subtitle">Resume & Progress Studio</div>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="./resume-editor.html" class="nav-link">Resume Editor</a>
+          <a href="./progress-dashboard.html" class="nav-link nav-link-active">Progress</a>
+          <a href="./goals.html" class="nav-link">Goals</a>
+          <a href="./daily-quotes.html" class="nav-link">Daily Quotes</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <div class="max-w-6 grid grid-2">
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <h1 class="card-title">Progress overview</h1>
+              <p class="card-subtitle">
+                Track how many tasks you’ve completed, your skill levels, and your current streak.
+              </p>
+            </div>
+          </div>
+          <div class="card-grid">
+            <div class="list-row">
+              <span class="list-row-label">Tasks completed</span>
+              <span class="list-row-value" id="tasks-label">0/0</span>
+            </div>
+            <div class="progress-meter">
+              <div class="progress-meter-bar">
+                <div id="tasks-bar" class="progress-meter-fill"></div>
+              </div>
+              <div class="progress-meter-caption">Overall completion</div>
+            </div>
+            <div id="skills-container"></div>
+          </div>
+        </section>
+
+        <aside class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Update progress</h2>
+              <p class="card-subtitle">
+                Use this as a lightweight tracker – numbers are persisted in PostgreSQL.
+              </p>
+            </div>
+          </div>
+          <form id="progress-form" class="form-grid">
+            <div class="field-row">
+              <label class="field-label" for="tasksCompleted">Tasks completed</label>
+              <input id="tasksCompleted" type="number" min="0" />
+            </div>
+            <div class="field-row">
+              <label class="field-label" for="tasksTotal">Total tasks</label>
+              <input id="tasksTotal" type="number" min="0" />
+            </div>
+            <div class="field-row">
+              <label class="field-label" for="streak">Current streak (days)</label>
+              <input id="streak" type="number" min="0" />
+            </div>
+            <div class="field-row">
+              <label class="field-label" for="skillsProgress">
+                Skills progress (JSON)
+              </label>
+              <textarea
+                id="skillsProgress"
+                placeholder='Example: [{"name":"JavaScript","level":70},{"name":"SQL","level":40}]'
+              ></textarea>
+              <div class="field-helper">
+                Each skill should have a <code>name</code> and a numeric <code>level</code> (0–100).
+              </div>
+            </div>
+            <div class="editor-actions">
+              <button type="submit" class="rm-btn rm-btn-primary">Save progress</button>
+              <span id="progress-status" class="save-status">Not saved yet</span>
+            </div>
+          </form>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="page-footer">
+      <div class="page-footer-inner">
+        <span>Progress Dashboard • Tasks, skills, streak</span>
+        <span>Goals and quotes live in their own focused views</span>
+      </div>
+    </footer>
+
+    <script type="module" src="../js/progressDashboard.js"></script>
+  </body>
+</html>
+
+

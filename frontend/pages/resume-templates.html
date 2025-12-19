@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ResuMate • Resume Templates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/resume.css" />
+  </head>
+  <body class="page-shell">
+    <header class="nav-shell">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-brand">
+          <div class="brand-mark"><span></span></div>
+          <div class="brand-text">
+            <div class="brand-title">ResuMate</div>
+            <div class="brand-subtitle">Resume & Progress Studio</div>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="./resume-editor.html" class="nav-link">Resume Editor</a>
+          <a href="./resume-viewer.html" class="nav-link">Viewer</a>
+          <a href="./resume-templates.html" class="nav-link nav-link-active">Templates</a>
+          <a href="./progress-dashboard.html" class="nav-link">Progress</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <div class="max-w-6 grid grid-2">
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <h1 class="card-title">Template gallery</h1>
+              <p class="card-subtitle">
+                Choose a layout style and generate a PDF based on your saved resume content.
+              </p>
+            </div>
+          </div>
+          <div id="template-grid" class="template-grid"></div>
+        </section>
+
+        <aside class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Export PDF</h2>
+              <p class="card-subtitle">
+                Provide basic metadata and click generate; ResuMate will download the PDF generated
+                on the backend using HTML templates.
+              </p>
+            </div>
+          </div>
+          <form id="template-form" class="form-grid">
+            <div class="field-row">
+              <label class="field-label" for="name">Full Name <span>*</span></label>
+              <input id="name" type="text" placeholder="John Smith" required />
+            </div>
+            <div class="field-row">
+              <label class="field-label" for="email">Email <span>*</span></label>
+              <input id="email" type="email" placeholder="john.smith@email.com" required />
+            </div>
+            <div class="field-row">
+              <label class="field-label" for="phone">Phone <span>*</span></label>
+              <input id="phone" type="tel" placeholder="(555) 123-4567" required />
+            </div>
+            <div class="field-row">
+              <label class="field-label" for="location">Location</label>
+              <input id="location" type="text" placeholder="New York, NY" />
+            </div>
+            <div class="field-row">
+              <label class="field-label" for="linkedin">LinkedIn</label>
+              <input id="linkedin" type="url" placeholder="linkedin.com/in/johnsmith" />
+            </div>
+            <div class="field-row">
+              <label class="field-label" for="github">GitHub</label>
+              <input id="github" type="url" placeholder="github.com/johnsmith" />
+            </div>
+            <div class="field-row">
+              <label class="field-label" for="portfolio">Portfolio</label>
+              <input id="portfolio" type="url" placeholder="johnsmith.dev" />
+            </div>
+
+            <div class="editor-actions">
+              <button type="submit" class="rm-btn rm-btn-primary">Generate PDF</button>
+              <span id="template-status" class="save-status">Select a template first</span>
+            </div>
+          </form>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="page-footer">
+      <div class="page-footer-inner">
+        <span>Template Gallery • HTML → PDF via Puppeteer</span>
+        <span>All templates live under backend/templates</span>
+      </div>
+    </footer>
+
+    <script type="module" src="../js/resumeTemplates.js"></script>
+  </body>
+</html>
+
+

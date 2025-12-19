@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ResuMate • My Applications</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/resume.css">
+</head>
+<body class="page-shell">
+  <header class="nav-shell">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="brand-mark"><span></span></div>
+        <div class="brand-text">
+          <div class="brand-title">ResuMate</div>
+          <div class="brand-subtitle">Resume & Progress Studio</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="./job-search.html" class="nav-link">Find Jobs</a>
+        <a href="./my-applications.html" class="nav-link nav-link-active">My Applications</a>
+        <a href="./recruiter-dashboard.html" class="nav-link">Recruiter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="max-w-6">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="card-title">My Job Applications</h1>
+          <p class="card-subtitle">Track the status of your job applications</p>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <select id="status-filter" style="padding: 8px; border: 1px solid #d1d5db; border-radius: 4px;">
+            <option value="">All Applications</option>
+            <option value="submitted">Submitted</option>
+            <option value="under_review">Under Review</option>
+            <option value="shortlisted">Shortlisted</option>
+            <option value="interview_scheduled">Interview Scheduled</option>
+            <option value="interviewed">Interviewed</option>
+            <option value="offered">Offered</option>
+            <option value="hired">Hired</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </div>
+        
+        <div id="applications-list" class="applications-list">
+          <div class="empty-state">
+            <div class="empty-icon">⏳</div>
+            <div class="empty-body-title">Loading applications...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="../js/myApplications.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+.preview-panel,
+.viewer-root {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.editor-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.save-status {
+  font-size: 11px;
+  color: var(--text-soft);
+}
+
+.experience-card {
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.94);
+  border: 1px solid rgba(31, 41, 55, 0.95);
+  padding: 8px 10px;
+  font-size: 12px;
+}
+
+.experience-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.experience-card-role {
+  font-weight: 500;
+}
+
+.experience-card-company {
+  color: var(--text-soft);
+  font-size: 11px;
+}
+
+.experience-card-meta {
+  font-size: 11px;
+  color: var(--text-soft);
+}
+
+.experience-card-desc {
+  margin-top: 4px;
+  color: var(--text-muted);
+}
+
+.skills-badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.skills-badge {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(55, 65, 81, 0.95);
+}
+
+.template-card {
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(55, 65, 81, 0.95);
+  padding: 10px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 160ms ease-out, box-shadow 160ms ease-out, border 160ms ease-out,
+    background 160ms ease-out;
+}
+
+.template-card-accent {
+  width: 42px;
+  height: 4px;
+  border-radius: 999px;
+}
+
+.template-card-title {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.template-card-body {
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.template-card-badge {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.template-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+  border-color: rgba(129, 140, 248, 0.9);
+}
+
+.template-card-active {
+  background: radial-gradient(circle at 0 0, rgba(79, 70, 229, 0.7), rgba(15, 23, 42, 0.96));
+  border-color: rgba(99, 102, 241, 0.95);
+}
+
+

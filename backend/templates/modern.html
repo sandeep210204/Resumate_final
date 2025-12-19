@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ResuMate - Modern Template</title>
+    <style>
+      :root {
+        --bg: #0b1120;
+        --card: #020617;
+        --accent: #6366f1;
+        --accent-soft: rgba(129, 140, 248, 0.2);
+        --text-main: #e5e7eb;
+        --text-muted: #9ca3af;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 40px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: radial-gradient(circle at top left, #1e3a8a, #020617 55%, #020617);
+        color: var(--text-main);
+      }
+      .shell {
+        max-width: 860px;
+        margin: 0 auto;
+        background: radial-gradient(circle at top left, #1f2937, #020617 55%, #020617);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 24px 60px rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(148, 163, 184, 0.25);
+      }
+      .hero {
+        padding: 28px 32px 20px;
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        gap: 16px;
+        background: linear-gradient(135deg, rgba(79, 70, 229, 0.38), transparent);
+      }
+      .identity .name {
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+      .identity .title {
+        margin-top: 4px;
+        font-size: 15px;
+        color: #c7d2fe;
+      }
+      .identity .summary {
+        margin-top: 12px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: var(--text-muted);
+      }
+      .meta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+        text-align: right;
+      }
+      .meta .pill {
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(129, 140, 248, 0.4);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .meta .contact {
+        margin-top: 12px;
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+      .body {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        gap: 0;
+      }
+      .col {
+        padding: 20px 28px 24px;
+      }
+      h2 {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: #a5b4fc;
+        margin: 12px 0 6px;
+      }
+      .section {
+        margin-bottom: 10px;
+        padding-bottom: 4px;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.95);
+      }
+      ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0 0 6px;
+      }
+      li {
+        margin-bottom: 4px;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+      strong {
+        color: #e5e7eb;
+      }
+      em {
+        color: #93c5fd;
+      }
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .skills-list span {
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: rgba(79, 70, 229, 0.1);
+        border: 1px solid rgba(129, 140, 248, 0.5);
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        padding: 3px 8px;
+        border-radius: 999px;
+        background: rgba(17, 24, 39, 0.9);
+        border: 1px solid rgba(55, 65, 81, 0.9);
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 30%, #e5e7eb, #4f46e5);
+      }
+      .empty-section {
+        color: #6b7280;
+        font-style: italic;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div class="identity">
+          <div class="name">{{name}}</div>
+          <div class="title">{{title}}</div>
+          <p class="summary">{{summary}}</p>
+        </div>
+        <aside class="meta">
+          <div class="pill">
+            <span>ResuMate • Modern</span>
+          </div>
+          <div class="contact">{{contact}}</div>
+        </aside>
+      </header>
+
+      <section class="body">
+        <div class="col">
+          <div class="section">
+            <h2>Experience</h2>
+            {{experienceHTML}}
+          </div>
+          <div class="section">
+            <h2>Projects</h2>
+            {{projectsHTML}}
+          </div>
+        </div>
+        <div class="col" style="border-left: 1px solid rgba(15, 23, 42, 0.95)">
+          <div class="section">
+            <h2>Education</h2>
+            {{educationHTML}}
+          </div>
+          <div class="section">
+            <h2>Skills</h2>
+            {{skillsHTML}}
+          </div>
+          <div style="margin-top: 12px; font-size: 11px; color: #6b7280">
+            <span class="badge">
+              <span class="dot"></span>
+              Built with ResuMate
+            </span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
+

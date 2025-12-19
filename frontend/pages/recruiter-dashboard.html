@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ResuMate • Recruiter Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/resume.css">
+</head>
+<body class="page-shell">
+  <header class="nav-shell">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="brand-mark"><span></span></div>
+        <div class="brand-text">
+          <div class="brand-title">ResuMate</div>
+          <div class="brand-subtitle">Resume & Progress Studio</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="./job-search.html" class="nav-link">Find Jobs</a>
+        <a href="./my-applications.html" class="nav-link">My Applications</a>
+        <a href="./recruiter-dashboard.html" class="nav-link nav-link-active">Recruiter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="max-w-6">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="card-title">Recruiter Dashboard</h1>
+          <p class="card-subtitle">Manage your job postings and applications</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+          <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 24px; font-weight: bold; color: #1f2937;">0</div>
+            <div style="color: #6b7280;">Active Jobs</div>
+          </div>
+          <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 24px; font-weight: bold; color: #1f2937;">0</div>
+            <div style="color: #6b7280;">Total Applications</div>
+          </div>
+          <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 24px; font-weight: bold; color: #1f2937;">0</div>
+            <div style="color: #6b7280;">Candidates Hired</div>
+          </div>
+        </div>
+        
+        <div style="display: flex; gap: 16px; margin-bottom: 20px;">
+          <button onclick="showPostJobForm()" class="rm-btn rm-btn-primary">Post New Job</button>
+          <button onclick="showApplications()" class="rm-btn rm-btn-ghost">View Applications</button>
+          <button onclick="showCandidateSearch()" class="rm-btn rm-btn-ghost">Search Candidates</button>
+        </div>
+        
+        <div id="dashboard-content">
+          <div class="empty-state">
+            <div class="empty-icon">💼</div>
+            <div class="empty-body-title">Welcome to Recruiter Dashboard</div>
+            <div class="empty-body-subtitle">Start by posting your first job or viewing applications</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module">
+    import api from '../api/axiosConfig.js';
+    
+    // Check if user is logged in
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = '../login.html';
+    }
+    
+    window.showPostJobForm = () => {
+      document.getElementById('dashboard-content').innerHTML = `
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Post New Job</h2>
+          </div>
+          <form id="post-job-form" class="form-grid">
+            <div class="field-row">
+              <label class="field-label">Job Title *</label>
+              <input id="job-title" type="text" required placeholder="e.g. Senior Software Engineer">
+            </div>
+            <div class="field-row">
+              <label class="field-label">Company Name *</label>
+              <input id="company-name" type="text" required placeholder="Your company name">
+            </div>
+            <div class="field-row">
+              <label class="field-label">Location *</label>
+              <input id="job-location" type="text" required placeholder="e.g. New York, NY or Remote">
+            </div>
+            <div class="field-row">
+              <label class="field-label">Job Description *</label>
+              <textarea id="job-description" required placeholder="Describe the role, responsibilities, and what you're looking for..." rows="6"></textarea>
+            </div>
+            <div class="field-row">
+              <label class="field-label">Required Skills (comma-separated)</label>
+              <input id="required-skills" type="text" placeholder="JavaScript, React, Node.js">
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div class="field-row">
+                <label class="field-label">Job Type</label>
+                <select id="job-type">
+                  <option value="full-time">Full Time</option>
+                  <option value="part-time">Part Time</option>
+                  <option value="contract">Contract</option>
+                  <option value="internship">Internship</option>
+                </select>
+              </div>
+              <div class="field-row">
+                <label class="field-label">Experience Level</label>
+                <select id="experience-level">
+                  <option value="entry">Entry Level</option>
+                  <option value="mid">Mid Level</option>
+                  <option value="senior">Senior Level</option>
+                  <option value="executive">Executive</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="rm-btn rm-btn-primary">Post Job</button>
+          </form>
+        </div>
+      `;
+      
+      document.getElementById('post-job-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        try {
+          const formData = {
+            companyId: 1, // Default company ID - in real app, user would select
+            title: document.getElementById('job-title').value,
+            company: document.getElementById('company-name').value,
+            location: document.getElementById('job-location').value,
+            description: document.getElementById('job-description').value,
+            requiredSkills: document.getElementById('required-skills').value.split(',').map(s => s.trim()).filter(s => s),
+            jobType: document.getElementById('job-type').value,
+            experienceLevel: document.getElementById('experience-level').value
+          };
+          
+          await api.post('/recruiter/jobs', formData);
+          alert('Job posted successfully!');
+          showDashboard();
+          
+        } catch (error) {
+          console.error('Failed to post job:', error);
+          alert('Failed to post job: ' + (error.response?.data?.message || 'Please try again'));
+        }
+      });
+    };
+    
+    window.showApplications = () => {
+      document.getElementById('dashboard-content').innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">📋</div>
+          <div class="empty-body-title">Applications Feature</div>
+          <div class="empty-body-subtitle">This feature is coming soon! You'll be able to view and manage all job applications here.</div>
+        </div>
+      `;
+    };
+    
+    window.showCandidateSearch = () => {
+      document.getElementById('dashboard-content').innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">🔍</div>
+          <div class="empty-body-title">Candidate Search Feature</div>
+          <div class="empty-body-subtitle">This feature is coming soon! You'll be able to search for candidates by skills and experience.</div>
+        </div>
+      `;
+    };
+    
+    function showDashboard() {
+      document.getElementById('dashboard-content').innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">💼</div>
+          <div class="empty-body-title">Welcome to Recruiter Dashboard</div>
+          <div class="empty-body-subtitle">Start by posting your first job or viewing applications</div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
